@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Coordenadas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/8b67618ed3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=crop_3_2" />
+</head>
+<body>
+    <h2 style="margin-top: 100px;">Calculadora de Coordenadas</h2>
+    <div class="silueta">
+<div class="opciones">
+    <!-- TABLERO -->
+    <div class="tablero">
+        <div class="input-group">
+            <input required="" type="number" name="text" autocomplete="off" class="input" id="width" value="300"> 
+            <label class="user-label" for="width">Ancho:</label>
+        </div>
+        <div class="input-group">
+            <input required="" type="number" name="text" autocomplete="off" class="input" id="height" value="400"> 
+            <label class="user-label" for="height">Alto:</label>
+        </div>
+    <button class="success" onclick="createBox()">Crear lienzo</button>
+</div>
+<!-- FORMAS -->
+ <div class="formas">
+    <div class="mydict">
+        <div id="shape">
+            <label>
+                <input type="radio" name="radio" checked="" value="rectangle">
+                <span><i class="fa fa-square"></i></span>
+            </label>
+            <label>
+                <input type="radio" name="radio" value="circle">
+                <span><i class="fa fa-circle"></i></span>
+            </label>
+            <label>
+                <input type="radio" name="radio" value="triangle">
+                <span style="display: inline-flex; justify-content: center; align-items: center; max-width: 30px; max-height: 18px; overflow: hidden;">
+                    <i class="fas fa-caret-up" style="font-size: 30px; transform: scale(1, 1.3);"></i>
+                </span>
+            </label>
+            <label>
+                <input type="radio" name="radio" value="text">
+                <span><i class="fa fa-font"></i></span>
+            </label>
+        </div>
+    </div>
+    <!-- INPUTS -->
+    <div class="input-group">
+        <input required="" type="number" name="text" autocomplete="off" class="input" id="shapeWidth" value="50"> 
+        <label class="user-label" for="shapeWidth">Ancho:</label>
+    </div>
+    <div class="input-group">
+        <input required="" type="number" name="text" autocomplete="off" class="input" id="shapeHeight" value="50"> 
+        <label class="user-label" for="shapeHeight">Alto:</label>
+    </div>
+    <div class="input-group" id="textInputGroup" style="display: none;">
+        <input required="" type="text" name="text" autocomplete="off" class="input" id="textContent" value="Texto de ejemplo"> 
+        <label class="user-label" for="textContent">Texto:</label>
+    </div>
+    <button class="success" onclick="addShape()">Agregar Forma</button>
+</div>
+</div>
+<div id="main-container">
+    <div id="container"></div>
+    <div id="layers">
+        <strong>Capas:</strong>
+        <div class="layer-items"></div>
+        <div class="info">
+        <p class="texto">Coordenadas:<span id="coords"> (x, y)</span></p>
+        <p class="texto">Tamaño:<span id="size"> (ancho, alto)</span></p>
+    </div>
+        <div class="toolbar">
+            <button class="tool-button" onclick="deleteShape()"><i class="fa fa-trash icono"></i></button>
+            <button class="tool-button" onclick="duplicateShape()"><i class="fa fa-clone icono"></i></button>
+            <button class="tool-button" onclick="resizeShape()"><i class="fa fa-pencil icono"></i></button>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+// Mostrar u ocultar el campo de texto según la opción seleccionada
+document.addEventListener('DOMContentLoaded', function() {
+    const radioButtons = document.querySelectorAll('input[name="radio"]');
+    const textInputGroup = document.getElementById('textInputGroup');
+    
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'text') {
+                textInputGroup.style.display = 'block';
+            } else {
+                textInputGroup.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
