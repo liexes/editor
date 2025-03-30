@@ -489,9 +489,6 @@ window.addEventListener('load', function() {
             textInput.value = 'text';
             textInput.id = 'text-radio';
             
-            const textSpan = document.createElement('span');
-            const textIcon = document.createElement('i');
-            textIcon.classList.add('fas', 'fa-font');
             textSpan.appendChild(textIcon);
             
             textLabel.appendChild(textInput);
